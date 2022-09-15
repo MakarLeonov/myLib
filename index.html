@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">        
+    <link rel="stylesheet" href="css/style.css">
+    <title>Моя библиотека</title>
+</head>
+<body>
+    <div id="app" v-cloak>
+        <div id="wrapper" :class="darkTheme ? 'darkBackground' : 'lightBackground'">
+            <div onselectstart="return false" onmousedown="return false">
+                <p class="myLib-title">Моя библиотека</p>
+                <div class="main" :class="darkTheme ? 'dark' : 'light'">
+                    <div v-if="name.length !== 0" :class="itemClose[index]" v-for="(key, index) in name" :key="key" @click="openclose(index+1)" @click.right.prevent="closeAll(index)">
+                        <div class="number"> {{ index + 1 }}.</div>
+                        <div class="title">{{ name[index] }}</div>
+                        <div class="author">{{ author[index] }}</div>
+                        <div class="stars">
+                            <div class="strok">{{ stars[index] }}</div>
+                        </div>
+    
+                        
+                        
+                        <span class="item-info" v-show="itemClose[index] === 'item-open'">
+                            <p class="note">{{ notes[index] }}</p>
+                            <p class="dop-info">
+                                <div class="status-info">Статус: {{ status[index] }}</div>
+                                <div class="date-info">{{ date[index] }}</div>
+                            </p>
+                        </span>
+                    </div>
+    
+                    <div class="else" v-else>
+                        <p class="else-title">
+                            Здесь пока нет книг, добавьте первую!
+                        </з>
+                    </div>
+                </div>
+    
+                
+            </div>
+    
+            <div class="buttonWrapper">
+                <div id="addBook" :class="darkTheme ? 'dark' : 'light'" @click="modalWindowStatus = 'open'">
+                    Добавить новую книгу
+                </div>
+            </div>
+    
+            <div class="modal-window" v-show="modalWindowStatus === 'open'">
+                <div id="modal-window-content" :class="darkTheme ? 'darkBackground' : 'light'">
+                    <div class="close" @click="closeModalWindow">&#215;</div>
+                    <h2 class="window-title">Добавить новую книгу</h2>
+                    <form>
+                    <div class="window-form">
+                        <div class="a">
+                            Название книги: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="text" v-model="newBook[0]">
+                        </div>
+                        <div class="a aa">
+                            Автор книги: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="text" v-model="newBook[1]">
+                        </div>
+                        <div class="a">
+                            Дата прочтения: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="date" v-model="dataMethod">
+                        </div>
+                        <div class="c">
+                            <div class="stars-title">Моя оценка:</div> 
+                            <div class="stars">
+                                <li class="star" v-for="(star, index) in 5" :key="index" @click="starsMethod(star, $index)">{{ index < clicked ? "🧡" : "🖤" }}</li>
+    
+    
+    
+                                <!-- <div class="star star2">🖤</div>
+                                <div class="star star3">🖤</div>
+                                <div class="star star4">🖤</div>
+                                <div class="star star5">🖤</div> -->
+                                <input type="text" class="hidestars" value="">
+                            </div>
+                        </div>
+                        <div class="d">
+                            <div>Мой комментарий:</div>
+                            <textarea class="textarea" :class="darkTheme ? 'darkInput' : 'lightInput'" cols="57" rows="17" v-model="newBook[4]"></textarea>
+                        </div>
+                        <input type="button" class="btn" @click="addNewBook" value="Добавить эту книгу">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
+
