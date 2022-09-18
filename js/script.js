@@ -13,12 +13,19 @@ const App = {
             dataMethod: '',
             clicked: 0,
             starsStr: '🖤 🖤 🖤 🖤 🖤',
-            darkTheme: 1,
+            darkTheme: false,
 
 
         }
     },
     methods: {
+        changeTheme() {
+            if (this.darkTheme) 
+                this.darkTheme = false
+            else
+                this.darkTheme = true
+        },
+
         openclose(key) {
             if (this.itemClose[key-1] === "item-open")
                 this.itemClose[key-1] = 'item-close'

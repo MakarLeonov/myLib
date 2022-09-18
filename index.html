@@ -13,8 +13,44 @@
 <body>
     <div id="app" v-cloak>
         <div id="wrapper" :class="darkTheme ? 'darkBackground' : 'lightBackground'">
-            <div onselectstart="return false" onmousedown="return false">
+            <div class="theme" @click="changeTheme" onselectstart="return false" onmousedown="return false">
+                <!-- <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div> -->
+                <img v-if="darkTheme" src="img/lampDark.png" alt="img" class="lamp">
+                <img v-else src="img/lampLight2.png" alt="img" class="lamp">
+                
+            </div>
+            <div onselectstart="return false" onmousedown="return false" class="cont">
                 <p class="myLib-title">Моя библиотека</p>
+                <!-- <div class="main" :class="darkTheme ? 'dark' : 'light'">
+                    <div v-if="name.length !== 0" :class="itemClose[index]" v-for="(key, index) in name" :key="key" @click="openclose(index+1)" @click.right.prevent="closeAll(index)">
+                        <div class="number"> {{ index + 1 }}.</div>
+                        <div class="title">{{ name[index] }}</div>
+                        <div class="author">{{ author[index] }}</div>
+                        <div class="stars">
+                            <div class="strok">{{ stars[index] }}</div>
+                        </div>
+    
+                        
+                        
+                        <span class="item-info" v-show="itemClose[index] === 'item-open'">
+                            <p class="note">{{ notes[index] }}</p>
+                            <p class="dop-info">
+                                <div class="status-info">Статус: {{ status[index] }}</div>
+                                <div class="date-info">{{ date[index] }}</div>
+                            </p>
+                        </span>
+                    </div>
+    
+                    <div class="else" v-else>
+                        <p class="else-title">
+                            Здесь пока нет книг, добавьте первую!
+                        </з>
+                    </div>
+                </div> -->
+                
+
                 <div class="main" :class="darkTheme ? 'dark' : 'light'">
                     <div v-if="name.length !== 0" :class="itemClose[index]" v-for="(key, index) in name" :key="key" @click="openclose(index+1)" @click.right.prevent="closeAll(index)">
                         <div class="number"> {{ index + 1 }}.</div>
@@ -41,8 +77,6 @@
                         </з>
                     </div>
                 </div>
-    
-                
             </div>
     
             <div class="buttonWrapper">
@@ -70,21 +104,13 @@
                             <div class="stars-title">Моя оценка:</div> 
                             <div class="stars">
                                 <li class="star" v-for="(star, index) in 5" :key="index" @click="starsMethod(star, $index)">{{ index < clicked ? "🧡" : "🖤" }}</li>
-    
-    
-    
-                                <!-- <div class="star star2">🖤</div>
-                                <div class="star star3">🖤</div>
-                                <div class="star star4">🖤</div>
-                                <div class="star star5">🖤</div> -->
-                                <input type="text" class="hidestars" value="">
                             </div>
                         </div>
                         <div class="d">
                             <div>Мой комментарий:</div>
                             <textarea class="textarea" :class="darkTheme ? 'darkInput' : 'lightInput'" cols="57" rows="17" v-model="newBook[4]"></textarea>
                         </div>
-                        <input type="button" class="btn" @click="addNewBook" value="Добавить эту книгу">
+                        <input type="button" class="btn" :class="darkTheme ? 'darkBtn' : 'lightBtn'" @click="addNewBook" value="Добавить эту книгу">
                     </div>
                     </form>
                 </div>
