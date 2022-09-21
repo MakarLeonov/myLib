@@ -195,6 +195,7 @@ body {
     position: fixed;
     width: 70px;
     height: 70px;
+    /* right: 5px; */
     /* background-color: rgb(235, 121, 121); */
     padding: 10px;
     margin-left: 5px;

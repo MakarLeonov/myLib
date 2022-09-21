@@ -14,59 +14,26 @@
     <div id="app" v-cloak>
         <div id="wrapper" :class="darkTheme ? 'darkBackground' : 'lightBackground'">
             <div class="theme" @click="changeTheme" onselectstart="return false" onmousedown="return false">
-                <!-- <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div> -->
                 <img v-if="darkTheme" src="img/lampDark.png" alt="img" class="lamp">
                 <img v-else src="img/lampLight2.png" alt="img" class="lamp">
-                
             </div>
+            <!-- <input type="text" class="asdf" v-model="searchAuthor"> -->
             <div onselectstart="return false" onmousedown="return false" class="cont">
                 <p class="myLib-title">Моя библиотека</p>
-                <!-- <div class="main" :class="darkTheme ? 'dark' : 'light'">
-                    <div v-if="name.length !== 0" :class="itemClose[index]" v-for="(key, index) in name" :key="key" @click="openclose(index+1)" @click.right.prevent="closeAll(index)">
-                        <div class="number"> {{ index + 1 }}.</div>
-                        <div class="title">{{ name[index] }}</div>
-                        <div class="author">{{ author[index] }}</div>
-                        <div class="stars">
-                            <div class="strok">{{ stars[index] }}</div>
-                        </div>
-    
-                        
-                        
-                        <span class="item-info" v-show="itemClose[index] === 'item-open'">
-                            <p class="note">{{ notes[index] }}</p>
-                            <p class="dop-info">
-                                <div class="status-info">Статус: {{ status[index] }}</div>
-                                <div class="date-info">{{ date[index] }}</div>
-                            </p>
-                        </span>
-                    </div>
-    
-                    <div class="else" v-else>
-                        <p class="else-title">
-                            Здесь пока нет книг, добавьте первую!
-                        </з>
-                    </div>
-                </div> -->
-                
-
                 <div class="main" :class="darkTheme ? 'dark' : 'light'">
-                    <div v-if="name.length !== 0" :class="itemClose[index]" v-for="(key, index) in name" :key="key" @click="openclose(index+1)" @click.right.prevent="closeAll(index)">
+                    <div v-if="books.length !== 0" :class="book.itemClose" v-for="(book, index) in books" :key="index" @click="openclose(book)" @click.right.prevent="closeAll(book)">
                         <div class="number"> {{ index + 1 }}.</div>
-                        <div class="title">{{ name[index] }}</div>
-                        <div class="author">{{ author[index] }}</div>
+                        <div class="title">{{ book.name }}</div>
+                        <div class="author">{{ book.author}}</div>
                         <div class="stars">
-                            <div class="strok">{{ stars[index] }}</div>
+                            <div class="strok">{{ book.stars }}</div>
                         </div>
     
-                        
-                        
-                        <span class="item-info" v-show="itemClose[index] === 'item-open'">
-                            <p class="note">{{ notes[index] }}</p>
+                        <span class="item-info" v-show="book.itemClose === 'item-open'">
+                            <p class="note">{{ book.notes }}</p>
                             <p class="dop-info">
-                                <div class="status-info">Статус: {{ status[index] }}</div>
-                                <div class="date-info">{{ date[index] }}</div>
+                                <div class="status-info">Статус: {{ book.status }}</div>
+                                <div class="date-info">{{ book.date }}</div>
                             </p>
                         </span>
                     </div>
@@ -90,7 +57,7 @@
                     <div class="close" @click="closeModalWindow">&#215;</div>
                     <h2 class="window-title">Добавить новую книгу</h2>
                     <form>
-                    <div class="window-form">
+                        <div class="window-form">
                         <div class="a">
                             Название книги: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="text" v-model="newBook[0]">
                         </div>

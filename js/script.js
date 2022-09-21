@@ -1,21 +1,19 @@
 const App = {
     data() {
         return {
-            itemClose: ['item-close', 'item-close', 'item-close',],
-            name: ['Триумфальная арка', 'Прощай оружие', 'Заводной апельсин', ],
-            author: ['Эрих Мария Ремарк', 'Эрнест Хемингуэй', 'Энтони Бёрджесс', ],
-            date: ['22.03.22', '22.03.22', '22.03.22',],
-            stars: ['🧡 🧡 🧡 🧡 🧡', '🧡 🧡 🧡 🧡 🖤', '🧡 🧡 🧡 🖤 🖤', ],
-            notes: ['Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, illum.', 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, illum.Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, illum.', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae, magni sit dolore, in reiciendis veritatis nihil iste mollitia, debitis illo porro? Accusantium esse perspiciatis perferendis. Culpa ex facilis qui nostrum?',],
-            status: ['Моя книга', 'Сейчас читаю', 'Одолжил другу', ],
+            books: [
+                {itemClose: 'item-close', name: 'Триумфальная арка', author: 'Эрих Мария Ремарк', date: '22.03.22', stars: '🧡 🧡 🧡 🧡 🧡', status: 'Моя книга', notes: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod aliquam eius assumenda, eos commodi reprehenderit corrupti molestiae neque saepe iure maiores quisquam blanditiis corporis accusamus, porro culpa doloribus cumque voluptatibus.'},
+                {itemClose: 'item-close', name: 'Три товарища', author: 'Эрих Мария Ремарк', date: '22.03.22', stars: '🧡 🧡 🧡 🧡 🖤', status: 'Моя книга', notes: 'Далеко-далеко за словесными горами в стране гласных, и согласных живут рыбные тексты. Города ведущими, даже, мир грустный от всех заглавных, ее власти на берегу живет что однажды текстов последний ipsum строчка диких это речью!'},
+                {itemClose: 'item-close', name: 'Прощай оружие!', author: 'Эрнест Хемингуэй', date: '22.03.22', stars: '🧡 🧡 🧡 🖤 🖤', status: 'Моя книга', notes: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos tempora, tempore dolorem possimus unde ex eos a accusamus ullam earum optio at exercitationem illo, rerum perferendis totam eius aspernatur neque?'},
+                
+            ],
             modalWindowStatus: 'close',
             newBook: ['', '', '', '', ''],
             dataMethod: '',
             clicked: 0,
             starsStr: '🖤 🖤 🖤 🖤 🖤',
-            darkTheme: false,
-
-
+            darkTheme: true,
+            // searchAuthor: '',
         }
     },
     methods: {
@@ -26,16 +24,16 @@ const App = {
                 this.darkTheme = true
         },
 
-        openclose(key) {
-            if (this.itemClose[key-1] === "item-open")
-                this.itemClose[key-1] = 'item-close'
+        openclose(book) {
+            if (book.itemClose === "item-open")
+                book.itemClose = 'item-close'
             else
-                this.itemClose[key-1] = 'item-open'
+                book.itemClose = 'item-open'
         },
 
-        closeAll(key) {
-            for (i = 0; i < this.itemClose.length; i++){
-                this.itemClose[i] = 'item-close';
+        closeAll(book) {
+            for (i = 0; i < this.books.length; i++){
+                this.books[i].itemClose = 'item-close';
             }
         },
 
@@ -72,11 +70,15 @@ const App = {
                 else
                     this.starsStr += "🖤 ";
             }
-        },
+        },    
+    },
 
+    computed: {
+        // filterAuthor() {
 
-        
+        // }
     }
+
 }
 
 
