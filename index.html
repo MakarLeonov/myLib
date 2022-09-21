@@ -17,11 +17,11 @@
                 <img v-if="darkTheme" src="img/lampDark.png" alt="img" class="lamp">
                 <img v-else src="img/lampLight2.png" alt="img" class="lamp">
             </div>
-            <!-- <input type="text" class="asdf" v-model="searchAuthor"> -->
+            <input type="text" class="asdf" v-model="searchBooks">
             <div onselectstart="return false" onmousedown="return false" class="cont">
                 <p class="myLib-title">Моя библиотека</p>
                 <div class="main" :class="darkTheme ? 'dark' : 'light'">
-                    <div v-if="books.length !== 0" :class="book.itemClose" v-for="(book, index) in books" :key="index" @click="openclose(book)" @click.right.prevent="closeAll(book)">
+                    <div v-if="books.length !== 0" :class="book.itemClose" v-for="(book, index) in filterBooks" :key="index" @click="openclose(book)" @click.right.prevent="closeAll(book)">
                         <div class="number"> {{ index + 1 }}.</div>
                         <div class="title">{{ book.name }}</div>
                         <div class="author">{{ book.author}}</div>

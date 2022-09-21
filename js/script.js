@@ -13,9 +13,10 @@ const App = {
             clicked: 0,
             starsStr: '🖤 🖤 🖤 🖤 🖤',
             darkTheme: true,
-            // searchAuthor: '',
+            searchBooks: '',
         }
     },
+
     methods: {
         changeTheme() {
             if (this.darkTheme) 
@@ -74,9 +75,12 @@ const App = {
     },
 
     computed: {
-        // filterAuthor() {
-
-        // }
+        filterBooks() {
+            return this.books.filter(book => {
+                return book.name.toUpperCase().indexOf(this.searchBooks.toUpperCase()) !== -1
+                || book.author.toUpperCase().indexOf(this.searchBooks.toUpperCase()) !== -1
+            })
+        }
     }
 
 }
