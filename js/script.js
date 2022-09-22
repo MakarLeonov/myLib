@@ -8,16 +8,17 @@ const App = {
                 
             ],
             modalWindowStatus: 'close',
-            newBook: ['', '', '', '', ''],
+            
             date: '',
-            clicked: 0,
-            starsStr: '🖤 🖤 🖤 🖤 🖤',
-            darkTheme: true,
-            searchBooks: '',
-
             name: '',
             author: '',
             comment: '',
+            starsStr: '🖤 🖤 🖤 🖤 🖤',
+
+            clicked: 0,
+            darkTheme: true,
+            searchBooks: '',
+            
         }
     },
 

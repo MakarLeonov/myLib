@@ -17,7 +17,9 @@
                 <img v-if="darkTheme" src="img/lampDark.png" alt="img" class="lamp">
                 <img v-else src="img/lampLight2.png" alt="img" class="lamp">
             </div>
-            <input type="text" class="asdf" v-model="searchBooks">
+            <div class="searchBooksField">
+                <input type="text" class="searchBooks" :class="darkTheme ? 'darkInput' : 'lightInput'" v-model="searchBooks">
+            </div>
             <div onselectstart="return false" onmousedown="return false" class="cont">
                 <p class="myLib-title">Моя библиотека</p>
                 <div class="main" :class="darkTheme ? 'dark' : 'light'">

@@ -203,6 +203,19 @@ body {
     cursor: pointer;
 }
 
+.searchBooksField {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.searchBooks {
+    width: 250px;
+    height: 27px;
+    border-radius: 5px;
+    padding: 13px;
+}
+
 .lamp {
     height: 100%;
     opacity: .8;
