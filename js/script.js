@@ -9,11 +9,15 @@ const App = {
             ],
             modalWindowStatus: 'close',
             newBook: ['', '', '', '', ''],
-            dataMethod: '',
+            date: '',
             clicked: 0,
             starsStr: '🖤 🖤 🖤 🖤 🖤',
             darkTheme: true,
             searchBooks: '',
+
+            name: '',
+            author: '',
+            comment: '',
         }
     },
 
@@ -48,16 +52,33 @@ const App = {
         },
 
         addNewBook() {
-            this.name.push(this.newBook[0])
-            this.author.push(this.newBook[1])
-            this.date.push(this.dataMethod[8] + this.dataMethod[9] + '.' + this.dataMethod[5] + this.dataMethod[6] + "." + this.dataMethod[2] + this.dataMethod[3])
-            this.stars.push(this.starsStr)                
-            this.notes.push(this.newBook[4])
-            this.itemClose.push('item-close')
-            this.newBook = ['']
-            this.clicked = 0
-            this.modalWindowStatus = 'close'
+            // this.name.push(this.newBook[0])
+            // this.author.push(this.newBook[1])
+            // this.date.push(this.dataMethod[8] + this.dataMethod[9] + '.' + this.dataMethod[5] + this.dataMethod[6] + "." + this.dataMethod[2] + this.dataMethod[3])
+            // this.stars.push(this.starsStr)                
+            // this.notes.push(this.newBook[4])
+            // this.itemClose.push('item-close')
+            // this.newBook = ['']
+            // this.clicked = 0
+            // this.modalWindowStatus = 'close'
+            
+            const newBook = {
+                itemClose: 'item-close', 
+                name: this.name, 
+                author: this.author, 
+                // date: '22.03.22',
+                date: this.otherKindOfDate, 
+                stars: this.starsStr, 
+                status: 'Моя книга', 
+                notes: this.comment,
+            }
 
+            this.books.push(newBook);
+
+            this.clicked = 0
+            this.starsStr = '🖤 🖤 🖤 🖤 🖤'
+            this.modalWindowStatus = 'close'
+            console.log(this.date)
             
         },
 
@@ -79,7 +100,12 @@ const App = {
             return this.books.filter(book => {
                 return book.name.toUpperCase().indexOf(this.searchBooks.toUpperCase()) !== -1
                 || book.author.toUpperCase().indexOf(this.searchBooks.toUpperCase()) !== -1
+                || book.date.toUpperCase().indexOf(this.searchBooks.toUpperCase()) !== -1
             })
+        },
+
+        otherKindOfDate() {
+            return (this.date[8] + this.date[9] + '.' + this.date[5] + this.date[6] + '.' + this.date[2] + this.date[3])
         }
     }
 

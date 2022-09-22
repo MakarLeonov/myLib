@@ -59,13 +59,13 @@
                     <form>
                         <div class="window-form">
                         <div class="a">
-                            Название книги: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="text" v-model="newBook[0]">
+                            Название книги: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="text" v-model="name">
                         </div>
                         <div class="a aa">
-                            Автор книги: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="text" v-model="newBook[1]">
+                            Автор книги: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="text" v-model="author">
                         </div>
                         <div class="a">
-                            Дата прочтения: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="date" v-model="dataMethod">
+                            Дата прочтения: <input class="aaa" :class="darkTheme ? 'darkInput' : 'lightInput'" style=" padding: 13px;" type="date" v-model="date">
                         </div>
                         <div class="c">
                             <div class="stars-title">Моя оценка:</div> 
@@ -75,7 +75,7 @@
                         </div>
                         <div class="d">
                             <div>Мой комментарий:</div>
-                            <textarea class="textarea" :class="darkTheme ? 'darkInput' : 'lightInput'" cols="57" rows="17" v-model="newBook[4]"></textarea>
+                            <textarea class="textarea" :class="darkTheme ? 'darkInput' : 'lightInput'" cols="57" rows="17" v-model="comment"></textarea>
                         </div>
                         <input type="button" class="btn" :class="darkTheme ? 'darkBtn' : 'lightBtn'" @click="addNewBook" value="Добавить эту книгу">
                     </div>
